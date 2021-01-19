@@ -75,7 +75,7 @@ function* count(start, step = 1) {
   }
 }
 
-function cycle(iter, n = 0) {
+function* cycle(iter, n = 0) {
   if (iter[Symbol.iterator] === undefined) {
     throw TypeError(`Expected iterable found ${typeof iter} which is not iterable`);
   }
@@ -84,14 +84,14 @@ function cycle(iter, n = 0) {
     let i = 0;
     while (i < n) {
       for (const el of iter) {
-        console.log(el);
+        yield el;
       }
       i += 1;
     }
   } else {
     while (true) {
       for (const el of iter) {
-        console.log(el);
+        yield el;
       }
     }
   }
